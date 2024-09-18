@@ -71,6 +71,18 @@ public class Complex {
         return this;
     }
 
+    public Complex dividedBy(Complex other) {
+        double divisor = other.re * other.re + other.im * other.im;
+        return new Complex((this.re * other.re + this.im * other.im) / divisor,
+                (this.im * other.re - this.re * other.im) / divisor);
+    }
+
+    public Complex sqrt() {
+        double magnitude = Math.sqrt(this.re * this.re + this.im * this.im);
+        double angle = Math.atan2(this.im, this.re) / 2;
+        return new Complex(magnitude * Math.cos(angle), magnitude * Math.sin(angle));
+    }
+
     /**
      * Multiply operation.
      * @param  b multiplier
